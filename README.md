@@ -10,7 +10,7 @@ The following command will create the image and tag it `apache`. Of course, you 
 docker build -t apache .
 ```
 
-By default the documentroot is set to `/var/www/app` but if you wish to build with a different document root, you can set a build argument named `documentroot` to which ever directory you want like so:
+The build file accepts a `documentroot` argument to set the `APACHE_DOCUMENTROOT` environment variable. By default the document root is set to `/var/www/app` but if you wish to build with a different document root, you can set the build argument to which ever directory you want like so:
 
 ```
 docker build -t apache --build-arg documentroot=/var/www/app/public .
