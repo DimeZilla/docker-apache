@@ -2,6 +2,9 @@ FROM ubuntu:16.04
 
 MAINTAINER Josh Diamond "diamond.joshh@gmail.com"
 
+# Allow for a DOCUMENTROOT build argument
+ARG documentroot=/var/www/app
+
 ENV LANG C.UTF-8
 # UPDATE UBUNTU
 RUN apt-get update && apt-get upgrade -y
@@ -19,7 +22,7 @@ RUN apt-get install apache2 -y
 ENV APACHE_SERVERADMIN admin@localhost
 ENV APACHE_SERVERNAME localhost
 ENV APACHE_SERVERALIAS docker.localhost
-ENV APACHE_DOCUMENTROOT /var/www/html
+ENV APACHE_DOCUMENTROOT ${documentroot:-/var/www/app}
 ENV APACHE_RUN_USER www-data
 ENV APACHE_RUN_GROUP www-data
 ENV APACHE_LOG_DIR /var/log/apache2
@@ -43,7 +46,7 @@ RUN a2enmod php7.1
 RUN a2enmod rewrite
 
 EXPOSE 80
-EXPOSE 8080 
+EXPOSE 8080
 EXPOSE 443
 
 # START APACHE
