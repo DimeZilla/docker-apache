@@ -48,6 +48,7 @@ RUN a2enmod rewrite
 EXPOSE 80
 EXPOSE 8080
 EXPOSE 443
+EXPOSE 8443
 
 # START APACHE
 CMD ["/usr/sbin/apache2ctl", "-D", "FOREGROUND"]
