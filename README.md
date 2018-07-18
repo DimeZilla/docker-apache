@@ -7,10 +7,14 @@ This creates a docker image based on ubuntu:16.04 that runs apache and php7.1.
 The following command will create the image and tag it `apache`. Of course, you can tag it whatever you want just remember the tag for the next command.
 
 ```
-docker build -t apache --build-arg documentroot=/var/www/app/public .
+docker build -t apache .
 ```
 
-By default the documentroot is set to `/var/www/app` but if you wish to build with a different document root, you can set a build argument named `documentroot` to which ever directory you want.
+By default the documentroot is set to `/var/www/app` but if you wish to build with a different document root, you can set a build argument named `documentroot` to which ever directory you want like so:
+
+```
+docker build -t apache --build-arg documentroot=/var/www/app/public .
+```
 
 ### apache.conf
 
